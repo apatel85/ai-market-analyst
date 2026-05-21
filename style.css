@@ -1,0 +1,203 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --accent: #007bff;
+    --success: #00c805;
+    --danger: #ff5000;
+    --warning: #ffc107;
+    --nav-bg: #1a1a1a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding-bottom: 70px; /* Space for bottom nav */
+}
+
+header {
+    background-color: var(--nav-bg);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #333;
+}
+
+header h1 {
+    font-size: 1.2rem;
+}
+
+#refreshBtn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+main {
+    padding: 15px;
+}
+
+h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+h3 { font-size: 1.1rem; margin: 20px 0 10px 0; color: #aaa; }
+p { margin-bottom: 10px; line-height: 1.4; font-size: 0.95rem; }
+
+/* Tabs */
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Grids & Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.metric-card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-name { font-size: 0.85rem; color: #888; margin-bottom: 5px; }
+.metric-price { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
+.metric-change { font-size: 0.9rem; font-weight: bold; }
+.metric-levels { font-size: 0.75rem; color: #666; margin-top: 8px; border-top: 1px solid #333; padding-top: 5px;}
+
+.positive { color: var(--success); }
+.negative { color: var(--danger); }
+
+.card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card ul { margin-left: 20px; margin-top: 10px; }
+.card li { margin-bottom: 8px; font-size: 0.9rem; }
+
+.highlight-text {
+    font-family: monospace;
+    background: #000;
+    padding: 10px;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+
+/* Expander/Accordion */
+.accordion {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion.active, .accordion:hover { background-color: #2a2a2a; }
+.panel {
+    padding: 0 15px;
+    background-color: #1a1a1a;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 0 0 8px 8px;
+}
+.panel.show { display: block; padding: 15px; }
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem;
+}
+.stock-item:last-child { border-bottom: none; }
+.stock-levels { font-size: 0.75rem; color: #888; text-align: right; }
+
+/* Alerts & Status */
+.market-status {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.alert-box {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+.error { background-color: rgba(255, 80, 0, 0.2); border-left: 4px solid var(--danger); }
+.warning { background-color: rgba(255, 193, 7, 0.2); border-left: 4px solid var(--warning); }
+.success { background-color: rgba(0, 200, 5, 0.2); border-left: 4px solid var(--success); }
+.bg-bull { background-color: rgba(0, 200, 5, 0.2); color: var(--success); }
+.bg-bear { background-color: rgba(255, 80, 0, 0.2); color: var(--danger); }
+
+/* Forms & Inputs */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+/* News List */
+.news-list { list-style: none; }
+.news-list li { margin-bottom: 15px; background: var(--card-bg); padding: 12px; border-radius: 8px; }
+.news-list a { color: var(--accent); text-decoration: none; font-size: 0.95rem; }
+
+/* Bottom Nav */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--nav-bg);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    padding-bottom: env(safe-area-inset-bottom, 10px); /* For iPhone notch */
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+}
+
+.nav-btn.active { color: var(--accent); font-weight: bold; }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Daily Market Brief</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#121212">
+    <!-- iOS support -->
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#121212">
+</head>
+<body>
+    <header>
+        <h1>📱 Daily Brief</h1>
+        <button id="refreshBtn">↻</button>
+    </header>
+
+    <main>
+        <!-- Morning Tab -->
+        <section id="tab-morning" class="tab-content active">
+            <h2>Morning Analysis</h2>
+
+            <div class="market-status" id="marketProb">
+                Loading statistical direction...
+            </div>
+
+            <h3>Global Markets</h3>
+            <div class="grid-container" id="grid-global">Loading...</div>
+
+            <h3>Futures & Indices</h3>
+            <div class="grid-container" id="grid-futures">Loading...</div>
+
+            <h3>Treasuries & VIX</h3>
+            <div class="grid-container" id="grid-rates">Loading...</div>
+
+            <h3>Sectors & Top 10 Stocks</h3>
+            <div id="sectors-list">Loading...</div>
+        </section>
+
+        <!-- Live Tab -->
+        <section id="tab-live" class="tab-content">
+            <h2>Live Alerts</h2>
+            <div class="alert-box error">🚨 ALERT: VIX spikes above R1 Resistance. Market volatility increasing.</div>
+            <div class="alert-box warning">⚠️ ALERT: AAPL high options volume detected.</div>
+            <div class="alert-box success">✅ BREAKING: Unexpected positive economic data released. Futures bouncing.</div>
+
+            <h3>Latest Feed</h3>
+            <ul id="newsFeed" class="news-list">
+                <li>Loading news...</li>
+            </ul>
+        </section>
+
+        <!-- Strategies Tab -->
+        <section id="tab-strat" class="tab-content">
+            <h2>Strategies</h2>
+            <p>Curated from top thought leaders for high win-rate trading.</p>
+
+            <select id="strategySelect" class="form-control">
+                <option>Opening Range Breakout (ORB) - Momentum</option>
+                <option>VWAP Bounce - Trend Following</option>
+                <option>Moving Average Pullback (20 SMA) - Swing</option>
+                <option>Volume Price Analysis (VPA) - Reversal</option>
+            </select>
+
+            <div class="card">
+                <h3>Execution Plan</h3>
+                <ul>
+                    <li><strong>Timeframe:</strong> 5min / 15min chart.</li>
+                    <li><strong>Entry:</strong> Wait for confirmation candle close.</li>
+                    <li><strong>Stop Loss:</strong> Strict adherence below support or VWAP.</li>
+                    <li><strong>Target:</strong> Next immediate pivot or R1/S1 level.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Top 25 Master Watchlist</h3>
+                <p class="caption">Focus only on these high liquidity names for the strategies above.</p>
+                <p class="highlight-text">AAPL, MSFT, NVDA, TSLA, META, AMZN, GOOGL, AMD, AVGO, JPM, BAC, V, MA, LLY, UNH, XOM, CVX, JNJ, PG, HD, COST, WMT, NFLX, CRM, ADBE</p>
+            </div>
+        </section>
+
+        <!-- EOD Tab -->
+        <section id="tab-eod" class="tab-content">
+            <h2>End of Day Recap</h2>
+            <p>Plan for tomorrow's session based on today's closing action.</p>
+
+            <div class="card">
+                <h3>Strongest Sectors Today</h3>
+                <div id="eod-sectors">Loading...</div>
+            </div>
+
+            <div class="card">
+                <h3>Key Stocks to Focus Tomorrow</h3>
+                <div id="eod-stocks">Loading...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-target="tab-morning">🌅 Morning</button>
+        <button class="nav-btn" data-target="tab-live">🚨 Live</button>
+        <button class="nav-btn" data-target="tab-strat">📊 Strat</button>
+        <button class="nav-btn" data-target="tab-eod">🌇 EOD</button>
+    </nav>
+
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
+</body>
+</html>
